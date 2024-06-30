@@ -25,7 +25,7 @@ public class SaveGearOnDeath {
     }
 
     public static void replaceInv(Player oldPlayer,Player newPlayer,boolean alive) {
-        if (oldPlayer.level.getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY)) {
+        if (oldPlayer.level().getGameRules().getBoolean(GameRules.RULE_KEEPINVENTORY)) {
             return;
         }
         newPlayer.getInventory().replaceWith(oldPlayer.getInventory());
