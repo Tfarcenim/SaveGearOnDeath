@@ -1,18 +1,18 @@
-package chronosacaria.sgod.mixin;
+package tfar.savegearondeath.mixin;
 
-import chronosacaria.sgod.mixin_methods.DontDropGearMethods;
-import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.world.entity.player.Inventory;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import tfar.savegearondeath.DontDropGearMethods;
 
-@Mixin(PlayerInventory.class)
+@Mixin(Inventory.class)
 public class PlayerInventoryMixin {
 
     @Inject(method = "dropAll", at = @At(value = "HEAD"), cancellable = true)
     private void dontDropGear(CallbackInfo ci){
-        PlayerInventory inv = (PlayerInventory) (Object) this;
+        Inventory inv = (Inventory) (Object) this;
         DontDropGearMethods.on(inv, ci);
     }
 }
